@@ -1,0 +1,121 @@
+<!doctype html>
+<html>
+	<head>
+		<title> Mobile Catalog </title>
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<script src="js.js"></script>
+	</head>
+	<body>
+	<header> <h1>Your Mobile Gallary !</h1> </header>
+	<div class="main-page">
+	  	<div class="grid" id="displayView" style="padding-left: 7%; padding-right: 7%;">
+		  	<h2>Search your handset here !</h2>
+		  	<!-- <div style="width: 100%;"> -->
+		  		<div class="input" style="width: 100%; float: left;">
+					<input id="searchInp" type="text" style=""onkeyup="onsearchEnter()"/>
+					<button type="button" style="cursor: pointer; width: 13%;height: 39px;float: right;" onclick="addPhone();">New Handset</button>
+				</div>
+		  	<div style="clear: left;">
+		  		<h4>Total handsets : <span id="totalCnt"></span></h4>
+		  		<h4>Page : <span id="pageNo"></span></h4>
+			</div>
+	  		<!-- <button type="button" style="cursor: pointer; width: 15%;float: right;" onclick="addPhone();">New Handset</button> -->
+	  		<div style="text-align: center; width: 100%;clear: both;padding-top: 0%;">
+		  		<div id="paging" style="text-align: center;padding-top: 0%;">
+		  			<button onclick="prevPage();"> << Prev </button>
+		  			<button onclick="nextPage();"> Next >> </button>
+		  		</div>
+		  		<table id="displayTable">
+		  			<thead style="font-size: 23px;">
+		  				<tr>
+			  				<td style="width: 10%; padding-left: 2px;">
+			  					Name
+			  					<div class="dropdown" style="padding: 0%;">
+								  <p onclick="showHideSortOptions('name');" style="cursor: pointer; text">&#8623;</p>
+								  <div id="nameSortDrp" class="dropdown-content">
+								  	<div class="menu-item">
+								    	<span style="cursor: pointer;" onclick="sortName( 0 );showHideSortOptions('name');"> a - z </span>
+								    </div>
+								    <div class="menu-item">
+								    	<span style="cursor: pointer;" onclick="sortName( 1 );showHideSortOptions('name');"> z - a </span>
+								    </div>
+								  </div>
+								</div>
+			  				</td>
+			  				<td style="width: 10%; padding-left: 2px;">
+			  					Company
+			  					<div class="dropdown" style="padding: 0%;">
+								  <p onclick="showHideSortOptions('company')" style="cursor: pointer;">&#8623;</p>
+								  <div id="companySortDrp" class="dropdown-content">
+								  	<div class="menu-item">
+								    	<span style="cursor: pointer;" onclick="sortByCompanyName( 0 );showHideSortOptions('company');"> a - z </span>
+								    </div>
+								    <div class="menu-item">
+								    	<span style="cursor: pointer;" onclick="sortByCompanyName( 1 );showHideSortOptions('company');"> z - a </span>
+								    </div>
+								  </div>
+								</div>
+			  				</td>
+			  				<td style="width: 10%; padding-left: 2px;">
+			  					Release Date
+			  					<div class="dropdown" style="padding: 0%;">
+								  <p onclick="showHideSortOptions('date');" style="cursor: pointer;">&#8623;</p>
+								  <div id="dateSortDrp" class="dropdown-content">
+								  	<div class="menu-item">
+								    	<span style="cursor: pointer;" onclick="sortByReleaseDate( 0 );showHideSortOptions('date');"> Oldest First </span>
+								    </div>
+								    <div class="menu-item">
+								    	<span style="cursor: pointer;" onclick="sortByReleaseDate( 1 );showHideSortOptions('date');"> Newest First </span>
+								    </div>
+								  </div>
+								</div>
+							</td>
+			  				<td style="width: 30%; padding-left: 2px;">Specifications</td>
+		  				</tr>
+		  			</thead>
+		  			<tbody style="font-size: 20px; ">
+		  				<tr class="row"></tr>		
+		  			</tbody>
+		  			
+		  		</table>
+		  		<div id="paging" style="text-align: center;">
+		  			<button onclick="prevPage();"> << Prev </button>
+		  			<button onclick="nextPage();"> Next >> </button>
+		  		</div>
+	  		</div>
+	  	</div>
+        <div id="inputView" style="display: none;">
+        	<div>
+		  		<h2>Enter new handset details here !</h2>
+		  	</div>
+		  	<form id="inputForm" name="input" action="#" method="post" style="width: 100%;">
+			  	<div style="width: 45%;float: left;">
+			  		<div class="input">
+			  			<label>Handset <span style="color: red">*</span></label>
+			  			<input type="text" name="mName" placeholder="handset name">
+			  		</div>
+			  		<div class="input">
+			  			<label>Company <span style="color: red">*</span></label>
+			  			<input type="text" name="mCompany" placeholder="company name"/>
+			  		</div>
+			  		<div class="input">
+			  			<label>Release Date</label>
+			  			<input type="date" name="mReleaseDt" placeholder="dd-mm-yyyy">
+			  		</div>
+	    	    </div>
+	    	    <div style="width: 45%;float: left;">
+	    	    	<div class="input">
+			  			<label>Specifications <span style="color: red">*</span></label>
+			  			<textarea name="mDesc" rows="4" cols="200" placeholder="enter handset specifications"></textarea>
+			  		</div>
+	    	    </div>
+	        </form>
+	        <div style="width: 100%; float: left;">
+	            <span id="errMsg" style="display: none;color: red; font-weight: bold; folt-style: italic"></span></br>
+		        <button type="submit" style="cursor: pointer;" onclick="saveForm();">Save</button>
+	            <button type="submit" style="cursor: pointer;" onclick="navigateToSearch();">Back</button>
+            </div>
+        </div>
+	</div>
+	</body>
+</html>
